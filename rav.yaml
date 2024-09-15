@@ -1,0 +1,13 @@
+scripts:
+  server:
+    - cd src && python manage.py runserver 8000
+  makemigrations:
+    - cd src && python manage.py makemigrations
+  migrate:
+    - cd src && python manage.py migrate
+  collectstatic:
+    - cd src && python manage.py collectstatic
+  startapp:
+    - cd src && python manage.py startapp $1
+  createsuperuser:
+    - cd src && python manage.py createsuperuser
