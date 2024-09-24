@@ -6,8 +6,12 @@ scripts:
   migrate:
     - cd src && python manage.py migrate
   collectstatic:
-    - cd src && python manage.py collectstatic
+    - cd src && python manage.py collectstatic --noinput
   startapp:
     - cd src && python manage.py startapp $1
   createsuperuser:
     - cd src && python manage.py createsuperuser
+  deploy:
+    - cd src && python manage.py migrate
+    - cd src && python manage.py collectstatic --noinput
+    - gunicorn src.core.wsgi --log-file -
