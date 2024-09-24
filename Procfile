@@ -1,1 +1,1 @@
-web: gunicorn src.core.wsgi --log-file -
+web: PYTHONPATH=src gunicorn src.core.wsgi --log-file -
