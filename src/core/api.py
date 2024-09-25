@@ -7,7 +7,7 @@ from chat.api import router as chat_router
 from genAI.api import router as genAI_router
 from users.api import router as users_router
 
-api = NinjaExtraAPI(version="1.0.0")
+api = NinjaExtraAPI(version="1.0.0", docs_url='/docs/')
 
 api.register_controllers(NinjaJWTDefaultController)
 
