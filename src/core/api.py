@@ -2,12 +2,16 @@ from ninja import Schema
 from ninja_extra import NinjaExtraAPI
 from ninja_jwt.authentication import JWTAuth
 from ninja_jwt.controller import NinjaJWTDefaultController
+from django.conf import settings
 
 from chat.api import router as chat_router
 from genAI.api import router as genAI_router
 from users.api import router as users_router
 
-api = NinjaExtraAPI(version="1.0.0", docs_url='/docs/')
+if (settings.DEPLOYMENT_ENV == 'production'):
+    api = NinjaExtraAPI(version="1.0.0", docs=None)
+else:
+    api = NinjaExtraAPI(version="1.0.0", docs_url='/docs/')
 
 api.register_controllers(NinjaJWTDefaultController)
 
