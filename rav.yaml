@@ -1,4 +1,6 @@
 scripts:
+  dependencies:
+    - pip freeze > requirements.txt
   server:
     - cd src && python manage.py runserver 8000
   makemigrations:

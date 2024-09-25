@@ -1,6 +1,4 @@
-from ninja import Schema
 from ninja_extra import NinjaExtraAPI
-from ninja_jwt.authentication import JWTAuth
 from ninja_jwt.controller import NinjaJWTDefaultController
 from django.conf import settings
 
@@ -19,11 +17,6 @@ api.add_router("chat/", chat_router)
 api.add_router("genAI/", genAI_router)
 api.add_router("users/", users_router)
 
-class UserSchema(Schema):
-    username: str
-    email: str
-    is_authenticated: bool
-
 @api.get("/")
 def health_check(request):
     return {
@@ -31,9 +24,3 @@ def health_check(request):
         "status": "ok"
         }
 
-@api.get('/me', response=UserSchema, auth=JWTAuth())
-def me(request):
-    return {
-        "page": "me",
-        "status": "ok"
-        }
